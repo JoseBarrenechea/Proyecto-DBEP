@@ -5,81 +5,96 @@ class Login(db.Model):
     username = db.Column(db.String(64), index=True)
     timestamp = db.Column(db.Date())
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), unique=True)
-    email = db.Column(db.String(30), unique=True)
-    password = db.Column(db.String(30))
-    age = db.Column(db.Integer)
-    education = db.Column(db.String(20))
-
 class Review(db.Model):
-    id = db.Column(db.Integer,primary_key=True,autoincrement=True)
-    comentary = db.Column(db.String)
-    califaction = db.Column(db.Integer)
-    author = db.Column(db.Integer)
-    city = db.Column(db.String)
+    id = db.Column(db.String,primary_key=True,autoincrement=True)
+    comentary = db.Column(db.String, nullable=False)
+    calification = db.Column(db.Integer, nullable=False)
+
+    author = db.Column(db.String, db.ForeignKey('username.dni'), nullable=False)
+
+    comment = db.relationship('Tourist_Place', backref='review')
 
 class Country(db.Model):
     name = db.Column(db.String,primary_key=True)
-    description = db.Column(db.String)
+    description = db.Column(db.String, nullable=False)
+
+    into = db.relationship('City', backref='country')
 
 class City(db.Model):
     name = db.Column(db.String,primary_key=True)
-    description = db.Column(db.String)
-    country = db.Column(db.String)
-    image = db.Column(db.String)
-    visits = db.Column(db.Integer)
+    description = db.Column(db.String, nullable=False)
+    image = db.Column(db.String, nullable=False)
+    visits = db.Column(db.Integer, nullable=False)
 
-class Tourist_Place(db.Model):
-    name = db.Column(db.String,primary_key=True)
-    city = db.Column(db.String)
-    description = db.Column(db.String)
-    image = db.Column(db.String)
+    ccountry = db.Column(db.String, db.foreignKey('country.name'), nullable=False)
+
+class Tourist_place(db.Model):
+    codeid = db.Column(db.String,primary_key=True)
+    description = db.Column(db.String, nullable=False)
+    image = db.Column(db.String, nullable=False)
+
+    tour_place = db.Column(db.String, db.ForeignKey('review.id'), nullable=False)
+
+    ddestiny = db.relationship('Travel', backref='tourist_place')
+
 
 class Plane(db.Model):
     model = db.Column(db.String,primary_key=True)
-    columns = db.Column(db.Integer)
-    rows = db.Column(db.Integer)
-    first_class = db.Column(db.Integer)
-    tourist_class = db.Column(db.Integer)
-    normal_class = db.Column(db.Integer)
+    columns = db.Column(db.Integer, nullable=False)
+    rows = db.Column(db.Integer, nullable=False)
+    first_class = db.Column(db.Integer, nullable=False)
+    tourist_class = db.Column(db.Integer, nullable=False)
+    normal_class = db.Column(db.Integer, nullable=False)
+
+    at = db.relationship('Travel', backref='plane')
 
 class Travel(db.Model):
-    code = db.Column(db.String,primary_key=True)
-    passengers = db.Column(db.Integer)
-    date_departoure = db.Column(db.Date)
-    hour = db.Column(db.Integer)
-    capacity = db.Column(db.Integer)
-    plane = db.Column(db.String)
+    id = db.Column(db.String,primary_key=True)
+    passengers = db.Column(db.Integer, nullable=False)
+    date_departoure = db.Column(db.Datetime, nullable=False)
+    hour = db.Column(db.String, nullable=False)
+
+    user_tr = db.Column(db.String, db.ForeignKey('username.dni'), nullable=False)
+    destiny = db.Column(db.String, db.ForeignKey('tourist_place.codeid'), nullable=False)
+    model_plane = db.Column(db.String, db.ForeignKey('plane.model'), nullable=False)
+
+    descript = db.relationship('Ticket', backref='travel')
 
 class Ticket(db.Model):
-    code = db.Column(db.String,primary_key=True)
-    user = db.Column(db.Integer)
-    classes = db.Column(db.String)
-    names = db.Column(db.String)
-    last_names = db.Column(db.String)
-    seats = db.Column(db.String)
-    travel = db.Column(db.String)
-    method = db.Column(db.Integer)
+    id = db.Column(db.String,primary_key=True)
+    classes = db.Column(db.String, nullable=False)
+    status = db.Column(db.String, nullable=False)
+    date_purchased = db.Column(db.Datetime, nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    seats = db.Column(db.String, nullable=False)
 
-class Credit_Card(db.Model):
+    ttravel = db.Column(db.String, db.ForeignKey('travel.id'), nullable=False)
+    payment = db.Column(db.Integer, db.ForeignKey('card.number'), nullable=False)
+    user_tk = db.Column(db.String, db.ForeignKey('username.dni'), nullable=False)
+
+class Card(db.Model):
     number = db.Column(db.Integer,primary_key=True)
-    method = db.Column(db.String)
-    user = db.Column(db.Integer)
+    method = db.Column(db.String, nullable=False)
     name = db.Column(db.String(35))
 
-class Usern(db.Model):
-    dni = db.Column(db.Integer,primary_key=True)
-    image = db.Column(db.String)
-    name = db.Column(db.String)
-    last_name = db.Column(db.String)
-    email = db.Column(db.String,unique=True)
-    birthday = db.Column(db.Date)
-    password = db.Column(db.String(40))
-    registration_date = db.Column(db.Date)
+    user_c = db.Column(db.String, db.ForeignKey('username.dni'), nullable=False)
 
+    view = db.relationship('Ticket', backref='card')
 
+class User(db.Model):
+    dni = db.Column(db.String,primary_key=True)
+    image = db.Column(db.String, nullable=False)
+    name = db.Column(db.String, nullable=False)
+    last_name = db.Column(db.String, nullable=False)
+    email = db.Column(db.String,unique=True, nullable=False)
+    birthday = db.Column(db.Datetime, nullable=False)
+    password = db.Column(db.String(40), nullable=False)
+    registration_date = db.Column(db.Datetime, nullable=False)
+
+    reviews = db.relationship('Review', backref='username')
+    hold = db.relationship('Travel', backref='username')
+    buy = db.relationship('Ticket', backref='username')
+    user = db.relationship('Card', backref='username')
 
     
 
