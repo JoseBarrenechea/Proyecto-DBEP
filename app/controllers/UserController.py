@@ -5,6 +5,8 @@ from app import db
 from app.models import User
 import datetime
 
+#https://developer.mozilla.org/ru/docs/Web/HTML/Element/Input/date
+
 def register():
     if request.method == "POST":
         dni = request.form["dni"]
