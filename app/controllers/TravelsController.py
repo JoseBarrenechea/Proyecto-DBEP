@@ -5,7 +5,8 @@ from app import db
 from app.models import Plane
 import datetime
 
-def planes():
+def home():
+  if request.method == "POST":
     planes = Plane.query.all()
     lista = "Planes : <br> "
     for plane_ in planes:
@@ -20,3 +21,9 @@ def planes():
         lista += "<br>"
         lista += "<br>"
     return lista
+  return render_template("travels.html")
+
+def planes():
+    return "a"
+    
+

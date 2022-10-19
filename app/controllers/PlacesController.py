@@ -6,14 +6,14 @@ from app.models import Country
 import datetime
 
 def home():
-    countries = Country.query.all()
-    lista = "Countries : <br>"
-    lista += "<br>"
-    for country_ in countries:
-        lista += country_.name 
+        countries = Country.query.all()
+        lista = "Countries : <br>"
         lista += "<br>"
-        lista += country_.description
-        lista += "<br>"
-        lista += "<br>"
+        for country_ in countries:
+           lista += country_.name 
+           lista += "<br>"
+           lista += country_.description
+           lista += "<br>"
+           lista += "<br>"
 
-    return lista
+        return lista
