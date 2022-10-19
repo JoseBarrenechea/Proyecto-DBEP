@@ -16,7 +16,7 @@ from app.routes.places_bp import places_bp
 from app.routes.travels_bp import travels_bp
 
 app.register_blueprint(login_bp, url_prefix="/login")
-app.register_blueprint(user_bp, url_prefix="/user")
+app.register_blueprint(user_bp, url_prefix="/profile")
 app.register_blueprint(places_bp, url_prefix="/places")
 app.register_blueprint(travels_bp, url_prefix="/travels")
 
