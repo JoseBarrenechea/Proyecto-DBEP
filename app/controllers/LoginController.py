@@ -18,29 +18,28 @@ def getLogins():
 
 def login():
     if request.method == "POST":
-        username = request.form["username"]
+        email = request.form["email"]
         password = request.form["password"]
 
-        user = User.query.filter(User.username == username).first()
+        email = User.query.filter(User.email == email).first()
 
-        if not user or not user.password == password:
-            return "Estudiante invalido o la contrasena no es correcta"
+        if not email or not email.password == password:
+            return "email o contrasena incorrecta"
+        ## newLogin = Login(username=username, timestamp=datetime.datetime.now())
 
-        newLogin = Login(username=username, timestamp=datetime.datetime.now())
+        ##logins = Login.query.filter(Login.timestamp == newLogin.timestamp and Login.username == username).all()
 
-        logins = Login.query.filter(Login.timestamp == newLogin.timestamp and Login.username == username).all()
+        ##if len(logins) > 3:
+           ## return "Se han registrado más de 3 intentos de login, su cuenta ha sido bloqueada hasta mañana"
 
-        if len(logins) > 3:
-            return "Se han registrado más de 3 intentos de login, su cuenta ha sido bloqueada hasta mañana"
+   ##     try:
+     ##       db.session.add(newLogin)
+       ##     db.session.commit()
+       ## except Exception as err:
+         ##   print(err)
+         ##   return "Internal server error"
 
-        try:
-            db.session.add(newLogin)
-            db.session.commit()
-        except Exception as err:
-            print(err)
-            return "Internal server error"
-
-        return redirect("/login/viewall?username=" + username)
+        return "aa"##redirect("/login/viewall?username=" + email)
 
     return render_template("login.html")
 

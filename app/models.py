@@ -84,7 +84,7 @@ class Review(db.Model):
 
     dni = db.Column(db.Integer, db.ForeignKey("user.dni"), nullable=False)
 
-    comment = db.relationship("Tourist_Place", backref="review")
+    comment = db.relationship("Tourist_place", backref="review")
 
 class Tourist_place(db.Model):
     __tablename__ = "tourist_place"

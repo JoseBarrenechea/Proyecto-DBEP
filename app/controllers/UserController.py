@@ -30,7 +30,7 @@ def register():
         if user1 or user2:
             return "Usuario o email ya existe"
 
-        user = User(dni=int(dni), password=password, email=email, name=name,last_name=last_name,birthday = datetime.strptime(date_str, '%m-%d-%Y').date())
+        user = User(dni=int(dni), password=password, email=email, name=name,last_name=last_name,birthday = datetime.datetime.strptime(birthday, '%Y-%m-%d').date(),image="",registration_date=datetime.datetime.now())
 
         try:
             db.session.add(user)
