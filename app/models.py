@@ -143,3 +143,14 @@ class Ticket(db.Model):
     ttravel = db.Column(db.Integer, db.ForeignKey("travel.id"), nullable=False)
     payment = db.Column(db.Integer, db.ForeignKey("card.number"), nullable=False)
     user_tk = db.Column(db.Integer, db.ForeignKey("user.dni"), nullable=False)
+
+class Infovuelos():
+	_tablename_ = "infovuelos"
+
+	origin = db.Column(db.String,nullable=True)
+	destiny = db.Column(db.String,nullable=True)
+
+	day = db.Column(db.String,nullable=True)
+	hour = db.Column(db.Time,nullable=True)
+	model_plane = db.Column(db.String,nullable=True)
+	price = db.Column(db.Integer,nullable=True)

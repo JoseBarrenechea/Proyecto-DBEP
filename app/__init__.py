@@ -20,7 +20,9 @@ app.register_blueprint(user_bp, url_prefix="/profile")
 app.register_blueprint(places_bp, url_prefix="/places")
 app.register_blueprint(travels_bp, url_prefix="/travels")
 
-
 db.create_all()
 
-print("holaaaa")
+from app import funciones
+vuelosin = funciones.datasave(r"C:\Users\José\Documents\GitHub\Proyecto-DBEP\app\InfoVuelos.txt")
+
+
