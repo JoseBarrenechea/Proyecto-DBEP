@@ -145,12 +145,12 @@ class Ticket(db.Model):
     user_tk = db.Column(db.Integer, db.ForeignKey("user.dni"), nullable=False)
 
 class Infovuelos():
-	_tablename_ = "infovuelos"
+    _tablename_ = "infovuelos"
+    id = db.Column(db.Integer,primary_key=True,autoincrement=True)
+    origin = db.Column(db.String,nullable =True)
+    destiny = db.Column(db.String,nullable =True)
 
-	origin = db.Column(db.String,nullable=True)
-	destiny = db.Column(db.String,nullable=True)
-
-	day = db.Column(db.String,nullable=True)
-	hour = db.Column(db.Time,nullable=True)
-	model_plane = db.Column(db.String,nullable=True)
-	price = db.Column(db.Integer,nullable=True)
+    day = db.Column(db.String,nullable=True)
+    hour = db.Column(db.Time,nullable = True)
+    model_plane = db.Column(db.String,nullable=True)
+    price = db.Column(db.Integer,nullable=True)

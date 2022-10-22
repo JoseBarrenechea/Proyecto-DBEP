@@ -3,7 +3,7 @@ import calendar # Calenderio
 import string # Strings
 import random # Random
 import json # importar libreria json
-
+from app.models import Infovuelos
 
 def datasave(texto):
     diccionario = {}
@@ -28,8 +28,10 @@ def datasave(texto):
                 for k in range(len(salto)):
                     sin_salto = vuelo[j].replace(salto[k], "")
                     d_v["PrecioBase"] = int(sin_salto)
+        #orign = Infovuelos.query.filter(Infovuelos.Origen == d_v["Origen"]).first()
+        #print(orign)
         diccionario[i+1] = d_v
 
-    for numero, valor in diccionario.items():
-        print(numero, valor)
+  #  for numero, valor in diccionario.items():
+        #print(numero, valor)
 
