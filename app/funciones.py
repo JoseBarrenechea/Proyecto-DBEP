@@ -7,7 +7,7 @@ from app import app
 import re
 from flask import render_template, request, redirect
 from app import db
-from app.models import Infovuelos
+from app.models import Infovuelos,Country
 
 def infvue(texto):
     diccionario = {}
@@ -41,6 +41,28 @@ def infvue(texto):
             except Exception as err:
                 print(err)
         diccionario[i+1] = d_v
+
+def infpais(texto):
+    archivo = open(texto,"r")
+    datos = archivo.readlines()
+    for i in range(len(datos)):
+        paisdatos = datos[i].split("[]")
+        pais = paisdatos[0]
+        desc = paisdatos[1]
+        C = Country.query.filter(Country.name == pais).first()
+        if C:
+            C.description = desc
+            try:
+                db.session.commit()
+            except Exception as err:
+                print(err)
+        else:
+            Countr = Country(name = pais,description = desc)
+            try:
+                db.session.add(Countr)
+                db.session.commit()
+            except Exception as err:
+                print(err)
 
   #  for numero, valor in diccionario.items():
         #print(numero, valor)

@@ -24,5 +24,6 @@ db.create_all()
 
 from app import funciones
 vuelosin = funciones.infvue(r"app\Info\InfoVuelos.txt")
+vuelosin = funciones.infpais(r"app\Info\InfoPaises.txt")
 
 
