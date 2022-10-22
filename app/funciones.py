@@ -9,7 +9,7 @@ from flask import render_template, request, redirect
 from app import db
 from app.models import Infovuelos
 
-def datasave(texto):
+def infvue(texto):
     diccionario = {}
     archivo = open(texto, "r")
     datos = archivo.readlines()
