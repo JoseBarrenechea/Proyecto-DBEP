@@ -144,9 +144,9 @@ class Ticket(db.Model):
     payment = db.Column(db.Integer, db.ForeignKey("card.number"), nullable=False)
     user_tk = db.Column(db.Integer, db.ForeignKey("user.dni"), nullable=False)
 
-class Infovuelos():
+class Infovuelos(db.Model):
     _tablename_ = "infovuelos"
-    id = db.Column(db.Integer,primary_key=True,autoincrement=True)
+    id = db.Column(db.Integer,primary_key=True)
     origin = db.Column(db.String,nullable =True)
     destiny = db.Column(db.String,nullable =True)
 
