@@ -40,9 +40,6 @@ def datasave(texto):
                 db.session.commit()
             except Exception as err:
                 print(err)
-            print("nopee")
-        else:
-            print(rep)
         diccionario[i+1] = d_v
 
   #  for numero, valor in diccionario.items():
