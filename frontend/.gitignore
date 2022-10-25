@@ -3,6 +3,7 @@ node_modules
 /dist
 .vscode
 .markdownlint.json
+.hintrc
 
 
 # local env files
