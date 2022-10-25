@@ -9,6 +9,7 @@
         "document-title": "off"
       }
     ],
-    "meta-viewport": "off"
+    "meta-viewport": "off",
+    "meta-charset-utf-8": "off"
   }
 }
