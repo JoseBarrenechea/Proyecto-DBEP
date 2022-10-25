@@ -1,0 +1,23 @@
+.hintrc
+
+# server files and environments
+__pycache__/
+.vscode
+.flaskenv
+EntornoVirtual/
+env/
+envrt/
+
+# local env files
+.env.local
+.env.*.local
+
+# Editor directories and files
+.DS_Store
+/dist
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
