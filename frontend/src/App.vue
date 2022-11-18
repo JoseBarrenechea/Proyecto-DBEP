@@ -24,7 +24,7 @@ export default {
 <style>
 
 html {
-  background: rgb(243, 229, 128);
+  background: rgb(1, 9, 53);
   margin: 0px;
 }
 
