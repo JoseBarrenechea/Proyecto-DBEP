@@ -64,5 +64,9 @@ def infpais(texto):
             except Exception as err:
                 print(err)
 
+def infciudad(texto):
+    archivo = open(texto,"r")
+    datos = archivo.readlines()
+
   #  for numero, valor in diccionario.items():
         #print(numero, valor)

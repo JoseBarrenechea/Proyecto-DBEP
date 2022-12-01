@@ -23,7 +23,7 @@ app.register_blueprint(travels_bp, url_prefix="/travels")
 # db.create_all()
 
 from app import funciones
-vuelosin = funciones.infvue(r"app\Info\InfoVuelos.txt")
-vuelosin = funciones.infpais(r"app\Info\InfoPaises.txt")
+#vuelosin = funciones.infvue(r"app\Info\InfoVuelos.txt")
+#vuelosin = funciones.infpais(r"app\Info\InfoPaises.txt")
 
 
