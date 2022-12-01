@@ -46,3 +46,5 @@ cover/
 instance/
 .webassets-cache
 .scrapy
+*.lock
+*.lock
