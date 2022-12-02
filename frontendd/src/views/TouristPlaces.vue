@@ -12,12 +12,14 @@
   <br>
   <div class="slider-cuidades">
     <ul>
-      <li><div>
-          <img src="../assets/logoutec.png" alt="" /><br>
-          <a> cuidad1</a>
-        </div>
-      </li>
-      <li><div>
+      <PreviewCIties v-for="(index) in Object.entries(infociuidades)"
+        :key="index"
+        :name="index[0]"
+        :country="index[1].Country"
+        :visits="index[1].Visits" 
+        :image="index[1].image">
+      </PreviewCIties>
+      <!-- <li><div>
           <img src="../assets/logoutec.png" alt="" /><br>
           <a> cuidad2</a>
         </div>
@@ -41,13 +43,25 @@
           <img src="../assets/logoutec.png" alt="" /><br>
           <a> cuidad6</a>
         </div>
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>
 
 <script>
-export default { name: "TouristPlaces", }
+import PreviewCIties from '../components/PreviewCIties.vue';
+import data from '../data/InfoCiudades.json'
+
+export default { 
+  name: "TouristPlaces",
+  async created() {
+      // this.infociuidades = fetch("http://localhost:5000/places/cities").then((response) => response.json())
+      this.infociuidades = data;
+  },
+  components: {
+    PreviewCIties
+  }
+} 
 </script>
 
 <style scoped>
@@ -60,6 +74,11 @@ export default { name: "TouristPlaces", }
     background-color: rgb(0, 255, 238);
     margin: 0 10% 0 10%;
     height: 12cm;
+    box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             1em 1em 1em rgba(0,0,0,0.3);
+    border-radius: 10px;
   }
 
       .message {
@@ -89,9 +108,15 @@ export default { name: "TouristPlaces", }
   .slider-cuidades {
     margin: 0 10% 40px 10%;
     padding-left: 20px;
-    background-color: #898999;
+    background-color: hsl(240, 2%, 51%, 0.5);
+    box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             1em 1em 1em rgba(0,0,0,0.3);
+    border-radius: 10px;
     overflow: hidden;
     height: 500px;
+    border-radius: 8px;
   }
 
       .slider-cuidades a {
@@ -101,7 +126,7 @@ export default { name: "TouristPlaces", }
         place-content: center;
       }
 
-      .slider-cuidades ul {
+      /* .slider-cuidades ul {
         margin-top: 50px;
         display: flex;
         animation: change 13s infinite alternate ease-in-out;
@@ -112,7 +137,7 @@ export default { name: "TouristPlaces", }
         margin: 0 80px 0 80px;
       }
 
-      .slider-cuidades img { height: 340px; }
+      .slider-cuidades img { height: 340px; } */
 
       .slider-cuidades div {
         border-radius: 30px;

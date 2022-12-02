@@ -56,18 +56,18 @@ export default {
   <div class="transfonde" v-if="loginAsk">
     <div class="box-logging">
       <div style="width:100%;">
-        <button id="close" @click="loginAsk=false">
+        <button type="submit" id="close" @click="loginAsk=false">
           <div class="arrow"></div>
         </button>
-      </div>
-      <h1>Login with our page!</h1>
+      </div><br>
+      <h1>Login Airline</h1>
       <form method="post">
-        <label for="u">Username</label>
-        <input id="username" type="text" name="u" required="required" />
+        <label for="e">Your email</label>
+        <input id="email" type="text" name="e" required="required" />
         <label for="p">Password</label>
         <input type="password" name="p" required="required" />
         <br><br>
-        <button if="password" type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+        <button if="password" type="submit" class="btn btn-primary btn-block btn-large">Log in!</button>
       </form>
       <div style="clear:both"></div>
 
@@ -172,6 +172,10 @@ export default {
         width: 15cm;
         padding: 10px 10px 10px 10px;
         position: absolute;
+        box-shadow:
+          inset 0 -3em 3em rgba(0,0,0,0.1),
+                0 0  0 2px rgb(255,255,255),
+                1em 1em 1em rgba(0,0,0,0.3);
         border-radius: 30px;
       }
 
@@ -194,13 +198,14 @@ export default {
 
       .box-logging input { 
         width: 70%; 
+        height: 10px;
         margin-bottom: 30px; 
         background: rgba(50, 172, 225, 0.2);
-        outline: none;
+        /* outline: none; */
         padding: 20px;
         font-size: 20px;
         color: rgb(145, 163, 197);
-        border: 5px solid rgb(255, 255, 255);
+        border: 3px solid rgb(255, 255, 255);
         border-radius: 8px;
         transition: box-shadow .5s ease;
       }
@@ -217,9 +222,7 @@ export default {
         background-color: rgba(214, 126, 26, 0.5);
         width: 60px;
         height: 40px;
-        font-size: 30px;
         float: right;
-        border: 2px solid;
         border-radius: 10px;
       }
 
@@ -228,14 +231,12 @@ export default {
         outline: none;
       }
 
-
       .btn {
         display: inline-block;
         *display: inline; 
         margin-bottom: 0; 
         padding: 9px 14px;
         font-size: 20px; 
-        line-height: 18px;
         width: 100%; display:block;
         line-height: normal; 
         border: 7px solid #eceff4; text-shadow: 1px 1px 1px rgba(0,0,0,0.4); 
