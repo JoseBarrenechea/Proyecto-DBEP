@@ -1,0 +1,20 @@
+<div class="row row-col-2 row-cols-sm-26row-cols-md-3 row-cols-lg-3">
+    {% for user in users %}
+
+        <div class="col">
+            <li class="list-group-item mb-3">
+                <form action="/edit/{{user}}" method="POST">
+                    <input type="text" class="form-control" value="{{user.Modelo}}" name="id">
+                    <small>{{user["Destino"]}}</small>
+                    <input type="text" class="form-control" value="{{user.Modelo}}" name="name">
+                    <small>Apellido</small>
+                    <input type="text" class="form-control" value="{{user}}" name="lastname">
+                    <small>Notas</small>
+                    <input type="text" class="form-control" value="{{user}}" name="notas">
+                    <button class="btn btn-primary btn-sm mt-3" type="submit">Editar</button>
+                </form>
+            </li>
+        </div>
+
+    {% endfor %}
+</div>

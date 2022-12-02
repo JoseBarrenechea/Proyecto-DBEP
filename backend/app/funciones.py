@@ -7,7 +7,8 @@ from app import app
 import re
 from flask import render_template, request, redirect
 from app import db
-from app.models import Infovuelos,Country
+from app.models import Infovuelos,Country,City
+
 
 def infvue(texto):
     diccionario = {}
@@ -66,7 +67,27 @@ def infpais(texto):
 
 def infciudad(texto):
     archivo = open(texto,"r")
-    datos = archivo.readlines()
+    datos = json.load(archivo)
+    for i,v in datos.items():
+        ciudad = i
+        descripcion = v["Desc"]
+        image = " "
+        visits = v["Visits"]
+        country = v["Country"]
+        rep = City.query.filter(City.name == i).first()
+        if not (rep):
+            nue = City(ccountry = v["Country"],name = i,description = v["Desc"],visits = v["Visits"],image = " " )
+            try:
+                db.session.add(nue)
+                db.session.commit()
+            except Exception as err:
+                print(err)
+
 
   #  for numero, valor in diccionario.items():
         #print(numero, valor)
+
+def diferencia_dias(dia):
+    f_viaje = datetime.datetime.today().strptime(dia, "%Y-%m-%d")
+    resta = (f_viaje.date() - datetime.date.today()).days
+    return resta

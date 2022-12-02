@@ -24,6 +24,6 @@ app.register_blueprint(travels_bp, url_prefix="/travels")
 
 from app import funciones
 #vuelosin = funciones.infvue(r"app\Info\InfoVuelos.txt")
-#vuelosin = funciones.infpais(r"app\Info\InfoPaises.txt")
+vuelosin = funciones.infciudad(r"app\Info\InfoCiudades.json")
 
 
