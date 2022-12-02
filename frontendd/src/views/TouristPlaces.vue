@@ -58,7 +58,7 @@ export default { name: "TouristPlaces", }
   .portada {
     display: flex;
     background-color: rgb(0, 255, 238);
-    margin: 0 2% 0 2%;
+    margin: 0 10% 0 10%;
     height: 12cm;
   }
 
@@ -71,10 +71,15 @@ export default { name: "TouristPlaces", }
         align-items: center;
       }
 
+      .portada, .message {
+        border-radius: 10px;
+      }
+
   #city-visit {
+    padding-top: 50px;
     display: grid;
     place-content: center;
-    font-size: 40px;
+    font-size: 55px;
     font-family: sans-serif;
     text-shadow: 2px 3px 0px #898999;
     line-height: 1.2;
@@ -82,7 +87,7 @@ export default { name: "TouristPlaces", }
 
   /* mostrar imagenes de ciudades */
   .slider-cuidades {
-    margin: 0 2% 40px 2%;
+    margin: 0 10% 40px 10%;
     padding-left: 20px;
     background-color: #898999;
     overflow: hidden;
@@ -114,6 +119,7 @@ export default { name: "TouristPlaces", }
         background-color: white;
       }
 
+
   @keyframes change {
     0% { margin-left: 0%; }
     25% { margin-left: 0%; }
@@ -121,4 +127,5 @@ export default { name: "TouristPlaces", }
     75% { margin-left: -150% ;}
     100% { margin-left: -150% ;}
   }
+
 </style>
