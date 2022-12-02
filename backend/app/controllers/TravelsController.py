@@ -9,11 +9,11 @@ import calendar
 
 def home():
   if request.method == "POST":
-    origen = request.form["Origin"]
-    destino = request.form["Destiny"]
-    partida = request.form["Departure"]
-    vuelta = request.form["Return"]
-    pasajeros = request.form["passengers"]
+    origen = request.args.get("Origin")
+    destino = request.args.get("Destiny")
+    partida = request.args.get("Departure")
+    vuelta = request.args.get("Return")
+    pasajeros = request.args.get("passengers")
 
     vuelos_disponibles = {}
 

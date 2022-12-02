@@ -18,8 +18,8 @@ def getLogins():
 
 def login():
     if request.method == "POST":
-        email = request.form["email"]
-        password = request.form["password"]
+        email = request.args.get("email")
+        password = request.args.get("password")
 
         email = User.query.filter(User.email == email).first()
 

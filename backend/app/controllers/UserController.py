@@ -10,13 +10,13 @@ import json
 
 def register():
     if request.method == "POST":
-        dni = request.form["dni"]
-        name = request.form["name"]
-        last_name = request.form["last_name"]
-        birthday = request.form["birthday"]
-        email = request.form["email"]
-        password = request.form["password"]
-        confirm_password = request.form["confirm_password"]
+        dni = request.args.get("dni")
+        name = request.args.get("name")
+        last_name = request.args.get("last_name")
+        birthday = request.args.get("birthday")
+        email = request.args.get("email")
+        password = request.args.get("password")
+        confirm_password = request.args.get("confirm_password")
         
 
         if (len(password) < 8):
@@ -46,6 +46,6 @@ def register():
 
 def get_tickers():
     if request.method == "POST":
-        dni = request.form["dni"]
+        dni = request.args.get("dni")
         tickets = Ticket.query.filter(Ticket.user_tk == int(dni)).all()
         return json.dumps(tickets,indent=4)
