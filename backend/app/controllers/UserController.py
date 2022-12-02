@@ -2,8 +2,9 @@ from app import app
 import re
 from flask import render_template, request, redirect
 from app import db
-from app.models import User
+from app.models import User,Ticket
 import datetime
+import json
 
 #https://developer.mozilla.org/ru/docs/Web/HTML/Element/Input/date
 
@@ -41,3 +42,10 @@ def register():
 
         return "Usuario registrado"
     return render_template("register.html")
+
+
+def get_tickers():
+    if request.method == "POST":
+        dni = request.form["dni"]
+        tickets = Ticket.query.filter(Ticket.user_tk == int(dni)).all()
+        return json.dumps(tickets,indent=4)
