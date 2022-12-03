@@ -17,7 +17,7 @@
         :name="index[0]"
         :country="index[1].Country"
         :visits="index[1].Visits" 
-        :image="index[1].image">
+        :image="index[1].Image">
       </PreviewCIties>
       <!-- <li><div>
           <img src="../assets/logoutec.png" alt="" /><br>
@@ -107,7 +107,7 @@ export default {
   /* mostrar imagenes de ciudades */
   .slider-cuidades {
     margin: 0 10% 40px 10%;
-    padding-left: 20px;
+    padding: 0 0 20px 20px;
     background-color: hsl(240, 2%, 51%, 0.5);
     box-shadow:
        inset 0 -3em 3em rgba(0,0,0,0.1),
@@ -115,34 +115,34 @@ export default {
              1em 1em 1em rgba(0,0,0,0.3);
     border-radius: 10px;
     overflow: hidden;
-    height: 500px;
+    height: 520px;
     border-radius: 8px;
   }
 
-      .slider-cuidades a {
+      /* .slider-cuidades a {
         width: 100%;
         font: 30px sans-serif;
         display: grid;
         place-content: center;
-      }
+      } */
 
-      /* .slider-cuidades ul {
-        margin-top: 50px;
+      .slider-cuidades ul {
+        margin-top: 40px;
         display: flex;
         animation: change 13s infinite alternate ease-in-out;
       }
 
-      .slider-cuidades li {
+      /* .slider-cuidades li {
         list-style: none;
         margin: 0 80px 0 80px;
-      }
+      } */
 
-      .slider-cuidades img { height: 340px; } */
+      /* .slider-cuidades img { height: 340px; } */
 
-      .slider-cuidades div {
+      /* .slider-cuidades div {
         border-radius: 30px;
         background-color: white;
-      }
+      } */
 
 
   @keyframes change {

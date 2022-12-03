@@ -1,19 +1,36 @@
 <script>
 import { RouterLink, RouterView } from "vue-router";
-// import LoginPage from "./views/LoginPage.vue";
-// import router from "./router/index.js";
+import ProfileView from "./views/ProfileView.vue";
 
 export default {
   name: "App",
   components: {
     RouterLink,
     RouterView,
+    // ProfileView
   },
   data() {
     return {
-      loginAsk: false
+      loginAsk: false,
+      logged: false,
+      email: "",
+      username: "",
+      password: ""
     };
   },
+
+  methods: {
+    signIn() {
+      this.email = document.getElementById("email").value
+      this.password = document.getElementById("password").value
+      const getUser = fetch(`http://localhost:5000/login?email=${this.email}&password=${this.password}`).then((response) => response.json())
+      if (getUser.sucess) {
+        this.username = getUser.name + " " + getUser.lastname[0] + "."
+        this.logged = true
+      }
+      this.loginAsk = false
+    }
+  }
   // methods: {},
   // created() {
   // },
@@ -39,10 +56,11 @@ export default {
       </div>
       <div id="options-right">
         <ul>
-          <li><button type="submit">My profile</button></li> <!-- dependiente-->
+          <!-- <li><RouterLink to="/profile"><button type="submit">My profile</button></RouterLink></li> dependiente -->
           <li><button type="submit">My travels</button></li>
           <!-- <li><RouterLink v-if="login" to="/login"><button @click="login=true">Log in</button></RouterLink></li> -->
-          <li><button type="submit" @click="loginAsk=true">Log in</button></li>
+          <li v-if="!logged"><button type="submit" @click="loginAsk=true">Log in</button></li>
+          <li v-else><RouterLink to="/profile{{}}"><button type="submit">My profile</button></RouterLink></li>
         </ul>
       </div>
     </div>
@@ -65,9 +83,9 @@ export default {
         <label for="e">Your email</label>
         <input id="email" type="text" name="e" required="required" />
         <label for="p">Password</label>
-        <input type="password" name="p" required="required" />
+        <input id="password" type="password" name="p" required="required" />
         <br><br>
-        <button if="password" type="submit" class="btn btn-primary btn-block btn-large">Log in!</button>
+        <button if="password" type="submit" class="btn" @click="signIn()">Log in!</button>
       </form>
       <div style="clear:both"></div>
 

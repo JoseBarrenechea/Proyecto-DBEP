@@ -15,9 +15,9 @@ const router = createRouter({
       name: "touristplaces",
       component: () => import("../views/TouristPlaces.vue"),
     }, {
-      // path: "/login",
-      // name: "login",
-      // component: () => import("../views/LoginPage.vue"),
+      path: "/profile",
+      name: "profile",
+      component: () => import("../views/ProfileView.vue"),
     },
   ],
 });

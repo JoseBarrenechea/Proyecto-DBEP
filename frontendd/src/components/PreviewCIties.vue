@@ -1,6 +1,6 @@
 <template>
 <li><div>
-    <img src="{{ image }}" alt="" /><br>
+    <img :src="image" alt="" /><br>
     <a> {{name}}</a>
     <a> of {{ country }}</a>
     <a> {{ visits }}</a>
@@ -33,7 +33,11 @@ export default {
     margin: 0 80px 0 80px;
   }
 
-  img { height: 340px; }
+  img {
+    height: 340px;
+    border-radius: 30px;
+  }
+
 
   div {
     border-radius: 30px;
