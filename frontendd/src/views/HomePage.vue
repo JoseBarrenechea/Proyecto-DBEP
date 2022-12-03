@@ -2,7 +2,7 @@
   <!-- <h1 class="green">{{ msg }}</h1> -->
   <div style="height: 7cm;"></div>
   <div class="back-content">
-    <h1 class="about-us" style="color:black">About us:</h1>
+    <h1 class="about-us" style="color:white">About us:</h1>
 
     <div class="content-home-1">
       <div class="descripcion" style="color:black">
@@ -40,7 +40,7 @@ export default { name: "HomePage", }
              1em 1em 1em rgba(0,0,0,0.3);
     border-radius: 10px;
     padding: 30px 0 0 0;
-    margin: 0 2% 0 2%;
+    margin: 0 10% 0 10%;
   }
   .about-us {
     display: grid;
@@ -55,7 +55,7 @@ export default { name: "HomePage", }
     margin-bottom: 100px;
   }
       .descripcion {
-        margin: 60px 0 60px 90px;
+        margin: 60px 0 60px 5%;
         width: 40%;
         display: grid;
         border-radius: 3px;
@@ -66,7 +66,7 @@ export default { name: "HomePage", }
       }
 
       .images-present {
-        margin: 60px 0px 60px 50px;
+        margin: 60px 5% 10px 5%;
         width: 60%;
         height: 400px;
         display: flex;

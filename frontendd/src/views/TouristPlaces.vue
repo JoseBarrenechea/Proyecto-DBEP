@@ -12,42 +12,31 @@
   <br>
   <div class="slider-cuidades">
     <ul>
-      <li><div>
-          <img src="../assets/logoutec.png" alt="" /><br>
-          <a> cuidad1</a>
-        </div>
-      </li>
-      <li><div>
-          <img src="../assets/logoutec.png" alt="" /><br>
-          <a> cuidad2</a>
-        </div>
-      </li>
-      <li><div>
-          <img src="../assets/logoutec.png" alt="" /><br>
-          <a> cuidad3</a>
-        </div>
-      </li>
-      <li><div>
-          <img src="../assets/logoutec.png" alt="" /><br>
-          <a> cuidad4</a>
-        </div>
-      </li>
-      <li><div>
-          <img src="../assets/logoutec.png" alt="" /><br>
-          <a> cuidad5</a>
-        </div>
-      </li>
-      <li><div>
-          <img src="../assets/logoutec.png" alt="" /><br>
-          <a> cuidad6</a>
-        </div>
-      </li>
+      <PreviewCIties v-for="(index) in Object.entries(infociuidades)"
+        :key="index"
+        :name="index[0]"
+        :country="index[1].Pais"
+        :visits="index[1].Visitas" 
+        :image="index[1].Imagen">
+      </PreviewCIties>
     </ul>
   </div>
 </template>
 
 <script>
-export default { name: "TouristPlaces", }
+import PreviewCIties from '../components/PreviewCIties.vue';
+// import data from '../data/InfoCiudades.json'
+
+export default { 
+  name: "TouristPlaces",
+  async created() {
+      this.infociuidades = fetch("http://localhost:5000/places/cities").then((response) => response.json())
+      // this.infociuidades = data;
+  },
+  components: {
+    PreviewCIties
+  }
+} 
 </script>
 
 <style scoped>
@@ -58,8 +47,13 @@ export default { name: "TouristPlaces", }
   .portada {
     display: flex;
     background-color: rgb(0, 255, 238);
-    margin: 0 2% 0 2%;
+    margin: 0 10% 0 10%;
     height: 12cm;
+    box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             1em 1em 1em rgba(0,0,0,0.3);
+    border-radius: 10px;
   }
 
       .message {
@@ -71,10 +65,15 @@ export default { name: "TouristPlaces", }
         align-items: center;
       }
 
+      .portada, .message {
+        border-radius: 10px;
+      }
+
   #city-visit {
+    padding-top: 50px;
     display: grid;
     place-content: center;
-    font-size: 40px;
+    font-size: 55px;
     font-family: sans-serif;
     text-shadow: 2px 3px 0px #898999;
     line-height: 1.2;
@@ -82,43 +81,31 @@ export default { name: "TouristPlaces", }
 
   /* mostrar imagenes de ciudades */
   .slider-cuidades {
-    margin: 0 2% 40px 2%;
-    padding-left: 20px;
-    background-color: #898999;
+    margin: 0 10% 40px 10%;
+    padding: 0 0 20px 20px;
+    background-color: hsl(240, 2%, 51%, 0.5);
+    box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             1em 1em 1em rgba(0,0,0,0.3);
+    border-radius: 10px;
     overflow: hidden;
-    height: 500px;
+    height: 520px;
+    border-radius: 8px;
   }
 
-      .slider-cuidades a {
-        width: 100%;
-        font: 30px sans-serif;
-        display: grid;
-        place-content: center;
-      }
-
       .slider-cuidades ul {
-        margin-top: 50px;
+        margin-top: 40px;
         display: flex;
         animation: change 13s infinite alternate ease-in-out;
-      }
-
-      .slider-cuidades li {
-        list-style: none;
-        margin: 0 80px 0 80px;
-      }
-
-      .slider-cuidades img { height: 340px; }
-
-      .slider-cuidades div {
-        border-radius: 30px;
-        background-color: white;
       }
 
   @keyframes change {
     0% { margin-left: 0%; }
     25% { margin-left: 0%; }
 
-    75% { margin-left: -150% ;}
-    100% { margin-left: -150% ;}
+    75% { margin-left: -200% ;}
+    100% { margin-left: -200% ;}
   }
+
 </style>

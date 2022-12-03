@@ -21,27 +21,22 @@ def login():
         email = request.args.get("email")
         password = request.args.get("password")
 
-        email = User.query.filter(User.email == email).first()
+        user = User.query.filter(User.email == email).first()
 
-        if not email or not email.password == password:
-            return "email o contrasena incorrecta"
-        ## newLogin = Login(username=username, timestamp=datetime.datetime.now())
+        if not user or not user.password == password:
+            return json.dumps({ "sucess": False })
 
-        ##logins = Login.query.filter(Login.timestamp == newLogin.timestamp and Login.username == username).all()
+        submit = {
+            "email": user.email,
+            "password": user.password,
+            "name": user.name,
+            "lastname": user.last_name,
+            "image": user.image,
+            "sucess": True
+        }
 
-        ##if len(logins) > 3:
-           ## return "Se han registrado más de 3 intentos de login, su cuenta ha sido bloqueada hasta mañana"
-
-   ##     try:
-     ##       db.session.add(newLogin)
-       ##     db.session.commit()
-       ## except Exception as err:
-         ##   print(err)
-         ##   return "Internal server error"
-
-        return "aa"##redirect("/login/viewall?username=" + email)
-
-    return render_template("login.html")
+        return json.dumps(submit)
+    # return ""
 
 def viewLogins():
     username = request.args["username"]
