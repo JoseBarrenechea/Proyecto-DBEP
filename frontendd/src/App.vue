@@ -1,13 +1,11 @@
 <script>
 import { RouterLink, RouterView } from "vue-router";
-import ProfileView from "./views/ProfileView.vue";
 
 export default {
   name: "App",
   components: {
     RouterLink,
     RouterView,
-    // ProfileView
   },
   data() {
     return {
@@ -25,10 +23,10 @@ export default {
       this.password = document.getElementById("password").value
       const getUser = fetch(`http://localhost:5000/login?email=${this.email}&password=${this.password}`).then((response) => response.json())
       if (getUser.sucess) {
-        this.username = getUser.name + " " + getUser.lastname[0] + "."
+        this.username = getUser.email + " " + getUser.lastname[0] + "."
         this.logged = true
+        this.loginAsk = false
       }
-      this.loginAsk = false
     }
   }
   // methods: {},
@@ -60,7 +58,7 @@ export default {
           <li><button type="submit">My travels</button></li>
           <!-- <li><RouterLink v-if="login" to="/login"><button @click="login=true">Log in</button></RouterLink></li> -->
           <li v-if="!logged"><button type="submit" @click="loginAsk=true">Log in</button></li>
-          <li v-else><RouterLink to="/profile{{}}"><button type="submit">My profile</button></RouterLink></li>
+          <li v-else><button type="submit" @click="this.$router.push({ path: `/profile/${getUser.name}`})">My profile</button></li>
         </ul>
       </div>
     </div>
@@ -94,18 +92,14 @@ export default {
 
   <RouterView />
 
-  <footer>
+  <!-- <footer>
     <ul>
-      <li> aaaa</li>
-      <li> aaaa</li>
+      <li></li>
     </ul>
-  </footer>
+  </footer> -->
 </template>
 
- <!-- tamanio de la ventana: 1920 1080 -->
-
 <style>
-  /* @import url(https://fonts.googleapis.com/css?family=Open+Sans); */
   
   html, body {
     margin: 0;
@@ -180,7 +174,6 @@ export default {
     overflow: hidden;
     width: 100%;
     height: 100%;
-    /* height: 10cm; */
     padding: 8% 22% 10% 34%;
   }
   
@@ -219,7 +212,6 @@ export default {
         height: 10px;
         margin-bottom: 30px; 
         background: rgba(50, 172, 225, 0.2);
-        /* outline: none; */
         padding: 20px;
         font-size: 20px;
         color: rgb(145, 163, 197);

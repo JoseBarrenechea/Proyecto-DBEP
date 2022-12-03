@@ -15,48 +15,23 @@
       <PreviewCIties v-for="(index) in Object.entries(infociuidades)"
         :key="index"
         :name="index[0]"
-        :country="index[1].Country"
-        :visits="index[1].Visits" 
-        :image="index[1].Image">
+        :country="index[1].Pais"
+        :visits="index[1].Visitas" 
+        :image="index[1].Imagen">
       </PreviewCIties>
-      <!-- <li><div>
-          <img src="../assets/logoutec.png" alt="" /><br>
-          <a> cuidad2</a>
-        </div>
-      </li>
-      <li><div>
-          <img src="../assets/logoutec.png" alt="" /><br>
-          <a> cuidad3</a>
-        </div>
-      </li>
-      <li><div>
-          <img src="../assets/logoutec.png" alt="" /><br>
-          <a> cuidad4</a>
-        </div>
-      </li>
-      <li><div>
-          <img src="../assets/logoutec.png" alt="" /><br>
-          <a> cuidad5</a>
-        </div>
-      </li>
-      <li><div>
-          <img src="../assets/logoutec.png" alt="" /><br>
-          <a> cuidad6</a>
-        </div>
-      </li> -->
     </ul>
   </div>
 </template>
 
 <script>
 import PreviewCIties from '../components/PreviewCIties.vue';
-import data from '../data/InfoCiudades.json'
+// import data from '../data/InfoCiudades.json'
 
 export default { 
   name: "TouristPlaces",
   async created() {
-      // this.infociuidades = fetch("http://localhost:5000/places/cities").then((response) => response.json())
-      this.infociuidades = data;
+      this.infociuidades = fetch("http://localhost:5000/places/cities").then((response) => response.json())
+      // this.infociuidades = data;
   },
   components: {
     PreviewCIties
@@ -119,38 +94,18 @@ export default {
     border-radius: 8px;
   }
 
-      /* .slider-cuidades a {
-        width: 100%;
-        font: 30px sans-serif;
-        display: grid;
-        place-content: center;
-      } */
-
       .slider-cuidades ul {
         margin-top: 40px;
         display: flex;
         animation: change 13s infinite alternate ease-in-out;
       }
 
-      /* .slider-cuidades li {
-        list-style: none;
-        margin: 0 80px 0 80px;
-      } */
-
-      /* .slider-cuidades img { height: 340px; } */
-
-      /* .slider-cuidades div {
-        border-radius: 30px;
-        background-color: white;
-      } */
-
-
   @keyframes change {
     0% { margin-left: 0%; }
     25% { margin-left: 0%; }
 
-    75% { margin-left: -150% ;}
-    100% { margin-left: -150% ;}
+    75% { margin-left: -200% ;}
+    100% { margin-left: -200% ;}
   }
 
 </style>

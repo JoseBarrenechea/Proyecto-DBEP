@@ -2,15 +2,18 @@
   <div id="espace"></div>
 
   <div class="photo-user"><img  src=""/></div>
- <div>aaa</div>
+  
+ <div> {{ name }}</div>
 </template>
 
 <script>
 export default { 
   name: "ProfileView",
-  props: [
-    "name", "lastname"
-  ]
+  data() {
+    return {
+      name: this.$route.params.name
+    }
+  },
 }
 </script>
 

@@ -3,7 +3,7 @@
     <img :src="image" alt="" /><br>
     <a> {{name}}</a>
     <a> of {{ country }}</a>
-    <a> {{ visits }}</a>
+    <a> Actual visits: {{ visits }}</a>
 </div></li>
 </template>
 
@@ -34,6 +34,7 @@ export default {
   }
 
   img {
+    margin: 20px;
     height: 340px;
     border-radius: 30px;
   }
@@ -41,7 +42,7 @@ export default {
 
   div {
     border-radius: 30px;
-    background-color: white;
+    background-color: aqua;
   }
 
 
